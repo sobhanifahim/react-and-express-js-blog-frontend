@@ -10,6 +10,7 @@ export default function Login() {
        const {name,value}=e.target;
        setFormdata({...formData,[name]:value})
     }
+    axios.defaults.withCredentials=true;
     const handleSubmit= async(e)=>{
         e.preventDefault();
         try{
