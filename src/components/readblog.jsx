@@ -16,13 +16,12 @@ export default function Readblog() {
     useEffect(()=>{
         axios.get(`http://localhost:8000/readblog/${blogData.author}/${blogData.bid}`)
         .then((response)=>{
-           console.log(response.data)
            setOpinion(response.data)
         })
         .catch((error)=>{
             console.log('Error fetching data', error)
         })
-    },[blogData])
+    })
     const handleChange=(e)=>{
         const {name,value}=e.target;
         setComments({...comments,[name]:value})

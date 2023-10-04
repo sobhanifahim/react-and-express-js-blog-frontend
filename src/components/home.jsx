@@ -13,15 +13,27 @@ export default function Home() {
             .catch((error) => {
                 console.log('Error getting data', error);
             });
-    }, []);
+    });
     const navigate = useNavigate();
     const navigateToCreateBlog = (blogData) => {
       navigate("/readblog", { state: { blogData } });
   };
+  const handleLogout=()=>{
+    axios.get('http://localhost:8000/logout')
+    .then((response)=>{
+       console.log(response.data);
+       navigate("/")
+    })
+    .catch((error)=>{
+       console.log('Error logging out',error)
+    })
+  }
 
     return (
         <>
             <button onClick={() => navigate("/createblog")}>Create blog</button>
+            <button onClick={() => navigate("/profile")}>Profile</button>
+            <button onClick={handleLogout}>Logout</button>
             {data !== null ? (
                 data.map((blog) => (
                     <div key={blog.bid} style={{ backgroundColor: "grey", height: "350px", width: "600px", marginTop: "2%" }}>
