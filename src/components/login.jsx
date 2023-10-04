@@ -1,21 +1,26 @@
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
+
 
 export default function Login() {
     const[formData,setFormdata]=useState({
         username:'',
         password:''
     })
+    
     const handleChange=(e)=>{
        const {name,value}=e.target;
        setFormdata({...formData,[name]:value})
     }
     axios.defaults.withCredentials=true;
+    const navigate = useNavigate();
     const handleSubmit= async(e)=>{
         e.preventDefault();
         try{
             const response= await axios.post('http://localhost:8000/',formData)
             console.log(response.data) 
+            navigate('/home')
         }catch(error){
            console.log(error.response)
         }
