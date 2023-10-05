@@ -1,5 +1,10 @@
 import axios from "axios";
 import { useState } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUser } from '@fortawesome/free-solid-svg-icons'
+import { faKey } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import signup from '../style/register.module.css'
 
 export default function Register() {
     const[formData,setFormdata]=useState({
@@ -32,12 +37,13 @@ export default function Register() {
       };
       
    return(
-    <div>
-    <h2>Login</h2>
+    <div className={signup.registerform}>
+    <h3>SignUp</h3>
     <form onSubmit={handleSubmit}>
       <div>
-        <label htmlFor="username">Username:</label>
-        <input
+      
+      <FontAwesomeIcon icon={faUser} />     <input
+          placeholder="username"
           type="text"
           id="username"
           name="username"
@@ -47,8 +53,9 @@ export default function Register() {
         />
       </div>
       <div>
-        <label htmlFor="email">Email:</label>
-        <input
+        
+      <FontAwesomeIcon icon={faEnvelope} />      <input
+          placeholder="email"
           type="email"
           id="email"
           name="email"
@@ -58,8 +65,9 @@ export default function Register() {
         />
       </div>
       <div>
-        <label htmlFor="password">Password:</label>
-        <input
+       
+      <FontAwesomeIcon icon={faKey} />      <input
+          placeholder="password"
           type="password"
           id="password"
           name="password"
@@ -69,7 +77,7 @@ export default function Register() {
         />
       </div>
       <div>
-        <button type="submit">Register</button>
+        <button type="submit" className={signup.btn}>Register</button>
       </div>
     </form>
   </div>

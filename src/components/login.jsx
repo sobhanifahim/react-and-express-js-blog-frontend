@@ -1,6 +1,12 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import { useUser } from "./UserContext";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUser } from '@fortawesome/free-solid-svg-icons'
+import { faKey } from '@fortawesome/free-solid-svg-icons'
+import {Link} from "react-router-dom";
+import signin from '../style/login.module.css'
 
 
 export default function Login() {
@@ -8,7 +14,7 @@ export default function Login() {
         username:'',
         password:''
     })
-    
+    const { setUser } = useUser(); 
     const handleChange=(e)=>{
        const {name,value}=e.target;
        setFormdata({...formData,[name]:value})
@@ -19,19 +25,20 @@ export default function Login() {
         e.preventDefault();
         try{
             const response= await axios.post('http://localhost:8000/',formData)
-            console.log(response.data) 
+            setUser(response.data)
+
             navigate('/home')
         }catch(error){
            console.log(error.response)
         }
     }
    return(
-    <div>
-    <h2>Login</h2>
+    <div className={signin.loginform}>
+     <h3>Sign In</h3>
     <form onSubmit={handleSubmit}>
       <div>
-        <label htmlFor="username">Username:</label>
-        <input
+      <FontAwesomeIcon icon={faUser} />     <input
+          placeholder="Username"
           type="text"
           id="username"
           name="username"
@@ -41,8 +48,8 @@ export default function Login() {
         />
       </div>
       <div>
-        <label htmlFor="password">Password:</label>
-        <input
+      <FontAwesomeIcon icon={faKey} />      <input
+          placeholder="Password"
           type="password"
           id="password"
           name="password"
@@ -52,9 +59,10 @@ export default function Login() {
         />
       </div>
       <div>
-        <button type="submit">Login</button>
+        <button type="submit" className={signin.btn}>Login</button>
       </div>
     </form>
+    <p>Don't have an account?  <Link to='/register' className={signin.register}>SignUP</Link><br/></p>
   </div>
    );    
 };

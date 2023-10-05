@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
-
+import { useNavigate } from 'react-router-dom';
+import cblog from '../style/createblog.module.css'
 export default function Createblog() {
     const [formData, setFormdata] = useState({
         title: '',
@@ -16,7 +17,7 @@ export default function Createblog() {
             setFormdata({ ...formData, [name]: value });
         }
     };
-
+    const navigate = useNavigate();
     axios.defaults.withCredentials = true;
 
     const handleSubmit = async (e) => {
@@ -33,18 +34,20 @@ export default function Createblog() {
                     'Content-Type': 'multipart/form-data', // Set content type to multipart/form-data for file upload
                 },
             });
+
             console.log(response.data);
+            navigate("/home")
         } catch (error) {
             console.log('Error sending data', error);
         }
     };
 
     return (
-        <div>
-            <h2>Create a Blog</h2>
-            <form onSubmit={handleSubmit}>
+        <div className={cblog.container}>
+            <h2>Create Your Blog</h2>
+            <form onSubmit={handleSubmit} >
                 <div>
-                    <label htmlFor="image">Upload Image:</label>
+                    <label htmlFor="image">Upload Image:  </label>
                     <input
                         type="file"
                         id="image"
@@ -55,7 +58,7 @@ export default function Createblog() {
                     />
                 </div>
                 <div>
-                    <label htmlFor="title">Title:</label>
+                    <label htmlFor="title">Title:</label><br />
                     <input
                         type="text"
                         id="title"
@@ -64,19 +67,19 @@ export default function Createblog() {
                         onChange={handleChange}
                         required
                     />
-                </div>
+                </div><br />
                 <div>
-                    <label htmlFor="content">Blog Content:</label>
+                    <label htmlFor="content">Blog Content:</label><br/><br/>
                     <textarea
                         id="content"
                         name="content"
                         value={formData.content}
                         onChange={handleChange}
                         required
-                    ></textarea>
+                    ></textarea><br />
                 </div>
-                <div>
-                    <button type="submit">Create Blog</button>
+                <div className={cblog.bdiv}>
+                    <button type="submit" className={cblog.btn}>Create Blog</button>
                 </div>
             </form>
         </div>

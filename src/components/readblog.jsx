@@ -2,8 +2,11 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
+import { useUser } from "./UserContext";
+
 
 export default function Readblog() {
+    const {user}=useUser();
     const [comments,setComments]=useState({
         comment:'',
     })
@@ -50,15 +53,14 @@ export default function Readblog() {
 
 
     }
-    console.log()
     
     return (
         <>
           <img src={arrayBufferToBase64(blogData.bimg.data)} alt="" height="200px" width="400px"/>
           
-          
-          <button onClick={handleDelete}>Delete blog</button>
-          
+          {user.id===blogData.uid ?
+          <button onClick={handleDelete}>Delete blog</button>: ''
+          }
           
           <br />
           <h1>{blogData.title}</h1>
