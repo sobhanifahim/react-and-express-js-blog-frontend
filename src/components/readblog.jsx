@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { useUser } from "./UserContext";
-
+import rblog from '../style/readblog.module.css'
 
 export default function Readblog() {
     const {user}=useUser();
@@ -55,21 +55,31 @@ export default function Readblog() {
     }
     
     return (
-        <>
-          <img src={arrayBufferToBase64(blogData.bimg.data)} alt="" height="200px" width="400px"/>
+        <div className={rblog.conatiner}>
+
+          <div className={rblog.designdiv}></div>
+          <div className={rblog.content}>
+          <img src={arrayBufferToBase64(blogData.bimg.data)} alt="" className={rblog.bimg}/><br />
           
           {user.id===blogData.uid ?
-          <button onClick={handleDelete}>Delete blog</button>: ''
+          <div className={rblog.dbtncontainer}>
+          <button onClick={handleDelete} className={rblog.dbtn}>Delete blog</button> </div>: ''
           }
           
           <br />
           <h1>{blogData.title}</h1>
+          <div className={rblog.ainfo}>
           <i><b>Author:</b> {blogData.author}</i>
+          </div>
           <p>Created at: {blogData.created_at}</p>
-          <h2>{blogData.content}</h2>
-          <form onSubmit={handleSubmit}>
-            <div>
+          <hr />
+          <div className={rblog.blogcontent}>
+          <p >{blogData.content}</p>
+          </div>
+          <form onSubmit={handleSubmit} className={rblog.commentbox}>
+            <div >
                 <textarea
+                
                 type="text"
                 id="comment"
                 name="comment"
@@ -77,19 +87,22 @@ export default function Readblog() {
                 onChange={handleChange}
                 required
                 />
-            </div>
-            <div>
-              <button type="submit">post</button>
+            </div> 
+            <div style={{marginLeft:"1%"}}>
+              <button type="submit" className={rblog.pbtn}>post</button>
             </div>
           </form>
           {opinion.map((cmnt)=>(
-            <div key={cmnt.cid}>
-             <i>{cmnt.commenter}</i>
-             <p>{cmnt.comments}</p>
+            <div key={cmnt.cid} className={rblog.comments}>
+             <div className={rblog.icomments}>
+             <i className={rblog.commenter}>{cmnt.commenter}</i><br />
+             <text>{cmnt.comments}</text><br />
+             </div>
             </div>
           ))}
+          </div>
         
-        </>
+        </div>
     );
 }
 

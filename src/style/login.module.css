@@ -64,13 +64,14 @@ input{
     }
     
    }
-   @media (min-width: 768px)and (max-width: 1024px) {
+   @media (min-width: 768px)and (max-width: 1025px) {
     .loginform{
-     width: 60vw;
-     margin: 10% 20%;
+    height: auto;
+     width: 40vw;
+     margin: 10% 28%;
     }
     .btn{
-     width: 5vw;
+     width: 6vw;
     }
     input{
      width: 25vw;

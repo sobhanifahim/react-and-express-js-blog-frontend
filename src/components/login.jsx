@@ -14,6 +14,7 @@ export default function Login() {
         username:'',
         password:''
     })
+    const [error,setError]=useState('')
     const { setUser } = useUser(); 
     const handleChange=(e)=>{
        const {name,value}=e.target;
@@ -26,10 +27,10 @@ export default function Login() {
         try{
             const response= await axios.post('http://localhost:8000/',formData)
             setUser(response.data)
-
             navigate('/home')
         }catch(error){
-           console.log(error.response)
+           console.log(error.response.data.message)
+           setError(error.response.data.message)
         }
     }
    return(
@@ -62,6 +63,7 @@ export default function Login() {
         <button type="submit" className={signin.btn}>Login</button>
       </div>
     </form>
+    <b style={{color:"red"}}>{error}</b>
     <p>Don't have an account?  <Link to='/register' className={signin.register}>SignUP</Link><br/></p>
   </div>
    );    

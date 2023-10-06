@@ -1,8 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import home from '../style/home.module.css';
+import {Link} from "react-router-dom";
 
 export default function Home() {
+    
     const [data, setData] = useState(null);
 
     useEffect(() => {
@@ -31,25 +34,38 @@ export default function Home() {
 
     return (
         <>
-            <button onClick={() => navigate("/createblog")}>Create blog</button>
-            <button onClick={() => navigate("/profile")}>Profile</button>
-            <button onClick={handleLogout}>Logout</button>
+        <div className={home.nav}>
+            <ul className={home.menu}>
+            <li ><Link to={"/createblog"} style={{textDecoration:"none",color:"black"}}>Create Blog</Link></li>
+                <li><Link to={"/profile"} style={{textDecoration:"none",color:"black"}}> Profile</Link></li>
+                <li><div onClick={handleLogout}>Logout</div></li>
+                
+            </ul>
+            
+        </div>
+        <h3>Latest Posts</h3>
+        <hr className={home.line}/>
+        <div className={home.showblogdiv}>
             {data !== null ? (
                 data.map((blog) => (
-                    <div key={blog.bid} style={{ backgroundColor: "grey", height: "350px", width: "600px", marginTop: "2%" }}>
+                    <div key={blog.bid}  className={home.blog}>
                         {blog.bimg !== null && blog.bimg.type === 'Buffer' ? (
-                            <img src={arrayBufferToBase64(blog.bimg.data)} alt="" height="200px" width="600px" />
+                            <img src={arrayBufferToBase64(blog.bimg.data)} alt=""  className={home.blogimg}/>
                         ) : (
                             <p>No image available</p>
                         )}
-                        <h3>{blog.title}</h3>
-                        <p>{blog.author}</p>
-                        <button onClick={()=>navigateToCreateBlog(blog)}>read</button>
+                        <div className={home.blogcontent}>
+                        <h4 className={home.title}>{blog.title}</h4>
+                        <i><b>Author: </b>{blog.author}</i>
+                        <p className={home.blogtext}>{blog.content}</p>
+                        <button onClick={()=>navigateToCreateBlog(blog)} className={home.bbtn}>Continue → </button>
+                        </div>
                     </div>
                 ))
             ) : (
                 <p>Loading...</p>
             )}
+        </div>
         </>
     );
 }
