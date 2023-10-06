@@ -95,8 +95,10 @@ export default function Readblog() {
           {opinion.map((cmnt)=>(
             <div key={cmnt.cid} className={rblog.comments}>
              <div className={rblog.icomments}>
+            <div className={rblog.move}>
              <i className={rblog.commenter}>{cmnt.commenter}</i><br />
              <text>{cmnt.comments}</text><br />
+             </div>
              </div>
             </div>
           ))}

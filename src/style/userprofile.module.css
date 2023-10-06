@@ -2,9 +2,9 @@
     text-align: center;
 }
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center; 
+   display: grid;
+   place-items: center;
+   flex-wrap: wrap;
     
 }
 .pimage{
@@ -13,14 +13,16 @@
     border-radius: 18vh;
     border: 5px solid rgb(0, 190, 223);
     box-shadow: 0px 3px 10px grey;
+    flex-wrap: wrap;
 }
 .inp{
-    margin-left: 40%;
+    display: grid;
+    place-items: center;
+    flex-wrap: wrap;
 }
 .pbtn{
-    display: flex;
-    justify-content: center;
-    align-items: center; 
+   display: grid;
+   place-items: center;
 }
 .btn{
     height: 5vh;
@@ -29,6 +31,7 @@
     background-color: rgb(0, 190, 223);
     border-radius: 10px;
     border: none;
+    flex-wrap: wrap;
 }
 
 @media (min-width: 1024px)and (max-width: 1281px) {
@@ -37,25 +40,22 @@
         height: 30vh;
         width: 20vw;
     }
-    .btn{
-     width: 10vw;
     }
-    .inp{
-        margin-left: 40%;
-    }   }
 
 @media (min-width: 768px)and (max-width: 1025px) {
     .pimage{
         border-radius: 25vh;
         height: 30vh;
-        width: 19vw;
+        width: 40vw;
     }
     .btn{
      width: 20vw;
     }
     .inp{
-        margin-left: 33%;
-    }   }
+       display: grid;
+       place-items: center;
+    }  
+ }
 @media (max-width: 590px) {
     .pimage{
         width: 40vw;
@@ -65,15 +65,14 @@
     .btn{
      width: 20vw;
     }
-    .inp{
-        margin-left: 20%;
-    }
+    
     
     
    }
    @media (max-width: 450px) {
     .pimage{
-        width: 55vw;
+        width: 40vw;
+        height: 20vh;
     }
     .btn{
      width: 20vw;

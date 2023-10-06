@@ -93,6 +93,9 @@ textarea{
     font-size: 1.7vh;
     
 }
+.move{
+    margin-left: 2%;
+}
 
 hr{
     width: 65vw;
