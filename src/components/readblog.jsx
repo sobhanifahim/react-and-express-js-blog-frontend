@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { useUser } from "./UserContext";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import rblog from '../style/readblog.module.css'
 
 export default function Readblog() {
@@ -63,7 +65,7 @@ export default function Readblog() {
           
           {user.id===blogData.uid ?
           <div className={rblog.dbtncontainer}>
-          <button onClick={handleDelete} className={rblog.dbtn}>Delete blog</button> </div>: ''
+          <button onClick={handleDelete} className={rblog.dbtn}><FontAwesomeIcon icon={faTrash} /></button> </div>: ''
           }
           
           <br />

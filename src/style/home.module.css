@@ -85,7 +85,46 @@ h3{
     background-color: blueviolet;
     align-items: center;
 }
-
+.paginationdiv{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-top: 1%;
+   margin-bottom: 1%;   
+}
+.paginationbtn{
+    height: 4vh;
+    width: 2vw;
+    color: rgb(0, 190, 223);
+    font-weight: bold;
+    border: 1px solid rgb(0, 190, 223);
+    background-color: white;
+}
+.paginationbtn:hover{
+    color: white;
+    background-color: rgb(0, 190, 223);
+    transition: ease-in 0.3s;
+}
+::-webkit-scrollbar {
+    width: 4.8px; 
+    height: 12px; 
+  }
+  
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+  
+  
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 6px; 
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+  
 @media (min-width: 768px)and (max-width: 1024px) {
     .showblogdiv {
       flex-direction: column;

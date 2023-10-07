@@ -26,8 +26,9 @@
     border-radius: 15px;
 }
 .dbtn{
-    border-radius: 1vh;
+    border-radius: 3vh;
     height: 5vh;
+    width: 2vw;
     border: none;
     color: white;
     background-color: red;
