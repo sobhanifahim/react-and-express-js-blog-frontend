@@ -1,3 +1,4 @@
+
 .loginform{
     background-color: white;
     height:45vh;
@@ -37,38 +38,26 @@ input{
 .register{
     text-decoration: none;
 }
-@media (max-width: 590px) {
-   .loginform{
-    width: 70vw;
-    margin: 10% 15%;
-   }
-   .btn{
-    width: 15vw;
-   }
-   input{
-    width: 45vw;
-   }
-   
-  }
+
   
   @media (max-width: 590px) {
     .loginform{
-     width: 70vw;
-     margin: 10% 15%;
+     width: 80vw;
+     margin: 10% 10%;
     }
     .btn{
      width: 15vw;
     }
     input{
-     width: 45vw;
+     width: 80vw;
     }
     
    }
    @media (min-width: 768px)and (max-width: 1025px) {
     .loginform{
     height: auto;
-     width: 40vw;
-     margin: 10% 28%;
+     width: 50vw;
+     margin: 10% 26%;
     }
     .btn{
      width: 6vw;

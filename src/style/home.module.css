@@ -1,4 +1,15 @@
 
+html{
+    height: 100%;
+    box-sizing: border-box;
+}
+body{
+    position: relative;
+    margin: 0;
+    min-height: 100%;
+    padding-bottom: 6.74rem;
+    box-sizing: inherit;
+}
 .nav{
     height: 8vh;
     width: 99.9%;
@@ -37,6 +48,8 @@
     column-gap: 3rem;
     flex-wrap: wrap;
     margin-top: 2%;
+
+    
 }
 .blog{
     height: 35vh;
@@ -90,7 +103,8 @@ h3{
    justify-content: center;
    align-items: center;
    margin-top: 1%;
-   margin-bottom: 1%;   
+   margin-bottom: 13%;   
+
 }
 .paginationbtn{
     height: 4vh;
@@ -104,6 +118,51 @@ h3{
     color: white;
     background-color: rgb(0, 190, 223);
     transition: ease-in 0.3s;
+}
+.footerdiv{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40vh;
+    width: 100%;
+    background-color: rgb(0, 190, 223);
+    border-radius: 2vh 2vh 0 0;
+    display: flex;
+
+}
+.quicklinks{
+    margin-left: 5%;
+}
+.quicklinks ul li{
+    list-style-type: none;
+    margin-top: 45%;
+    font-weight: bold;
+}
+.quicklinks ul li:hover{
+    text-decoration: underline;
+    color: white;
+}
+.vertcleline{
+    border-left: 3px solid white; 
+    height: 200px;
+   margin: 2% 5%;
+}
+
+.social{
+    margin-top: 5%;
+}
+.social ul{
+    display: flex;
+}
+.social ul li{
+    margin-left: 55%;
+    list-style-type: none;
+    cursor: pointer;
+}
+.brands{
+    height: 4vh;
+    flex-wrap: wrap;
 }
 ::-webkit-scrollbar {
     width: 4.8px; 
@@ -137,6 +196,23 @@ h3{
     .blogimg{
         width: 35vw;
     }
+    .paginationbtn{
+        width: 4vw;
+    }
+    .paginationbtn{
+        width: 6vw;
+    }
+    .social ul li{
+        margin-left: 20%;
+    }
+    .brands{
+        height: 1.5vh;
+     
+    }
+    .paginationdiv{
+        margin-bottom: 55%;
+    }
+   
   }
   @media (max-width: 590px) {
     .showblogdiv {
@@ -150,5 +226,22 @@ h3{
     .blogimg{
         width: 35vw;
     }
+    .paginationbtn{
+        width: 6vw;
+    }
+    .social ul li{
+        margin-left: 20%;
+    }
+    .brands{
+        height: 1.5vh;
+     
+    }
+    .paginationdiv{
+        margin-bottom: 59%;
+    }
+    .paginationbtn{
+        width: 7vw;
+    }
+
   }
     

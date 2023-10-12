@@ -76,7 +76,9 @@ export default function Readblog() {
           <p>Created at: {blogData.created_at}</p>
           <hr />
           <div className={rblog.blogcontent}>
-          <p >{blogData.content}</p>
+            <div className={rblog.innerbcontent}>
+                <p >{blogData.content}</p>
+            </div>
           </div>
           <form onSubmit={handleSubmit} className={rblog.commentbox}>
             <div >

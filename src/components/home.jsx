@@ -2,6 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import home from '../style/home.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFacebook,faTwitter,faInstagram,faLinkedin } from '@fortawesome/free-brands-svg-icons'
 import { Link } from "react-router-dom";
 
 export default function Home() {
@@ -45,6 +47,12 @@ export default function Home() {
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentItems = data !== null ? data.slice(indexOfFirstItem, indexOfLastItem) : [];
+    const scrollToTop = () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth', 
+        });
+      };
 
     return (
         <>
@@ -81,6 +89,25 @@ export default function Home() {
                     </button>
                 ))}
             </div>
+            <footer className={home.footerdiv}>
+                <div className={home.quicklinks}>
+                        <ul>
+                            <li><Link to={"/home"} style={{ textDecoration: "none", color: "white" }} onClick={scrollToTop}>Home</Link></li>
+                            <li><Link to={"/createblog"} style={{ textDecoration: "none", color: "white" }}>Create Blog</Link></li>
+                            <li><Link to={"/profile"} style={{ textDecoration: "none", color: "white" }}>Profile</Link></li>
+                        </ul>
+                </div>
+                <div className={home.vertcleline}></div>
+                <div className={home.social}> Join us on: 
+                <ul>
+                       <li><FontAwesomeIcon icon={faFacebook} className={home.brands}/></li>
+                       <li><FontAwesomeIcon icon={faTwitter} className={home.brands}/></li>
+                       <li><FontAwesomeIcon icon={faInstagram} className={home.brands}/></li>
+                       <li><FontAwesomeIcon icon={faLinkedin} className={home.brands}/></li>
+                    </ul>
+                </div>
+
+            </footer>
         </>
     );
 }
